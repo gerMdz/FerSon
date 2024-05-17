@@ -1,1 +1,1 @@
-[recuperar-registros-individuales](https://codersfree.com/courses-status/aprende-laravel-avanzado/recuperar-registros-individuales)
+[asignacion-masiva](https://codersfree.com/courses-status/aprende-laravel-avanzado/asignacion-masiva)
