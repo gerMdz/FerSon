@@ -1,21 +1,22 @@
 <?php
 
-use App\Models\User;
+use App\Models\Category;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('prueba', function (){
-   $user = new User();
+Route::get('prueba', function () {
 
-   $user->name= "GerMdz";
-   $user->email = "ger@mdz.com.ar";
-   $user->password = bcrypt('germdz');
+   $categories_id = [18,19];
 
-   $user->save();
+    Category::whereIn('id', $categories_id)->delete();
 
-   return $user;
+    return 'Eliminado';
+
+
+
+
 
 });
