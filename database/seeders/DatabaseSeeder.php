@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\Category;
+use App\Models\Entrada;
 use App\Models\Profiler;
 use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
@@ -21,6 +22,7 @@ class DatabaseSeeder extends Seeder
              ]))
          ;
          Category::factory(10)->create();
+         Entrada::factory(100)->create();
 //         Profiler::factory(100)->create();
 
 //        User::factory()->create([

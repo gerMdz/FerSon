@@ -1,5 +1,7 @@
 <?php
 
+use App\Models\Category;
+use App\Models\Entrada;
 use App\Models\Profiler;
 use Illuminate\Support\Facades\Route;
 
@@ -9,7 +11,8 @@ Route::get('/', function () {
 
 Route::get('prueba', function () {
 
-    $profile = Profiler::find('9c80860d-420e-4b00-b05f-c251fa7142ef');
-    return $profile->user;
+    $entrada = Entrada::query()->inRandomOrder()->first();
+
+    return $entrada->category;
 
 });
