@@ -1,8 +1,10 @@
 <?php
 
 use App\Models\Category;
+use App\Models\Curso;
 use App\Models\Entrada;
 use App\Models\Profiler;
+use App\Models\User;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -11,8 +13,13 @@ Route::get('/', function () {
 
 Route::get('prueba', function () {
 
-    $entrada = Entrada::query()->inRandomOrder()->first();
+    $number = rand(1, 10);
 
-    return $entrada->category;
+    $curso = Curso::find($number);
+    $secciones = $curso->sections()->get();
+
+    $lecciones = $curso->getLessons();
+
+    return compact('curso', 'secciones', 'lecciones');
 
 });

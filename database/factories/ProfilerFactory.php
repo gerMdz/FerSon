@@ -19,13 +19,7 @@ class ProfilerFactory extends Factory
             'job' => $this->faker->jobTitle(),
             'phone' => $this->faker->phoneNumber(),
             'website' => $this->faker->url(),
-            'address' => $this->faker->address(),
-            'city' => $this->faker->city(),
-            'country' => $this->faker->country(),
-            'postal_code' => $this->faker->postcode(),
             'image' => $this->faker->imageUrl(),
-
-
         ];
     }
 }

@@ -5,6 +5,7 @@ namespace App\Models;
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\HasOne;
+use Illuminate\Database\Eloquent\Relations\HasOneThrough;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use App\Models\Profiler;
@@ -50,6 +51,14 @@ class User extends Authenticatable
     public function profile():HasOne
     {
        return $this->hasOne(Profiler::class);
+    }
+
+    /**
+     * @return HasOneThrough
+     */
+    public function getDomicilio(): HasOneThrough
+    {
+        return $this->hasOneThrough(Domicilio::class, Profiler::class);
     }
 
 

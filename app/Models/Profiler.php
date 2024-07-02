@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Support\Str;
 
 class Profiler extends Model
@@ -52,5 +53,10 @@ class Profiler extends Model
         parent::boot();
         static::creating(static fn($model) => $model->id = (string) Str::uuid());
 
+    }
+
+    public function domicilios(): HasOne
+    {
+        return $this->hasOne(Domicilio::class);
     }
 }
