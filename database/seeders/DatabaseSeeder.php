@@ -6,6 +6,7 @@ use App\Models\Category;
 use App\Models\Curso;
 use App\Models\Domicilio;
 use App\Models\Entrada;
+use App\Models\Etiqueta;
 use App\Models\Lesson;
 use App\Models\Profiler;
 use App\Models\Section;
@@ -31,6 +32,7 @@ class DatabaseSeeder extends Seeder
             );
         Category::factory(10)->create();
         Entrada::factory(100)->create();
+        Etiqueta::factory(10)->create();
 
         Curso::factory(10)->create()
             ->each(fn($curso) => Section::factory(2)->create([
