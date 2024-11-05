@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasOne;
+use Illuminate\Database\Eloquent\Relations\MorphOne;
 use Illuminate\Support\Str;
 
 class Profiler extends Model
@@ -58,5 +59,10 @@ class Profiler extends Model
     public function domicilios(): HasOne
     {
         return $this->hasOne(Domicilio::class);
+    }
+
+    public function image(): MorphOne
+    {
+        return $this->morphOne(Images::class, 'imageable');
     }
 }

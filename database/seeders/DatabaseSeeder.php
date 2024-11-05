@@ -7,6 +7,7 @@ use App\Models\Curso;
 use App\Models\Domicilio;
 use App\Models\Entrada;
 use App\Models\Etiqueta;
+use App\Models\Images;
 use App\Models\Lesson;
 use App\Models\Profiler;
 use App\Models\Section;
@@ -29,9 +30,19 @@ class DatabaseSeeder extends Seeder
                 ->each(fn($profiler) => Domicilio::factory()->create([
                     'profiler_id' => $profiler->id
                 ]))
+                ->each(function (Profiler $profiler) {
+                    $profiler->image()->create([
+                        'url' => 'url_profiler'
+                    ]);
+                })
             );
         Category::factory(10)->create();
-        Entrada::factory(100)->create();
+        Entrada::factory(100)->create()->each(function (Entrada $entrada) {
+            $entrada->image()->create([
+               'url' => 'url_image'
+            ]);
+        });
+
         Etiqueta::factory(10)->create();
 
         Curso::factory(10)->create()
