@@ -5,9 +5,9 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Illuminate\Database\Eloquent\Relations\MorphOne;
+use Illuminate\Database\Eloquent\Relations\MorphToMany;
 
 class Entrada extends Model
 {
@@ -18,13 +18,6 @@ class Entrada extends Model
         return $this->belongsTo(Category::class);
     }
 
-    public function etiquetas(): BelongsToMany
-    {
-        return $this->belongsToMany(Etiqueta::class)
-            ->withPivot('data')
-            ->withTimestamps()
-            ;
-    }
 
     public function image(): MorphOne
     {
@@ -36,4 +29,13 @@ class Entrada extends Model
         return $this->morphMany(Comentario::class, 'comentarioable');
     }
 
+    /**
+     * ManyToMany Polymorphic
+     */
+
+    public function etiquetas(): MorphToMany
+    {
+        return $this->morphToMany(Etiqueta::class, 'etiquetable')
+            ->withTimestamps();
+    }
 }

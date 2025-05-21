@@ -16,6 +16,7 @@ Route::get('prueba', function () {
     $comentario = $entradas->comentarios()->create([
         'body' => 'Esto es un comentario inicial'
     ]);
+    $entradas->etiquetas()->attach([4,5,6]);
 
-    return [$entradas->comentarios, $comentario];
+    return [$entradas->etiquetas, $comentario];
 });
